@@ -1,24 +1,154 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Minha conta | Level Up Store</title>
-<link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Level Up Store: loja de jogos digitais para PC e console.">
+  <title>Minha conta | Level Up Store</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<header class="topo">
-  <a class="logo" href="index.html"><img src="img/logo.png" alt="Level Up Store"></a>
-  <nav><a href="index.html">Início</a><a href="catalogo.html">Catálogo</a><a href="lista-desejos.html">Desejos</a><a href="contato.html">Contato</a><a href="login.html">Entrar</a></nav>
-  <a class="carrinho" href="carrinho.html">Carrinho <span id="cart-count">0</span></a>
-</header>
-<main>
-<h1>Minha conta</h1><section><h2>Biblioteca</h2><p>Jogos comprados aparecem aqui.</p></section><section><h2>Pedidos</h2><p>Histórico de compras.</p></section><section><h2>Dados</h2><p>Editar nome, e-mail e senha.</p></section>
-</main>
-<footer class="rodape">
-  <p>© 2026 Level Up Store. Projeto de estudo.</p>
-  <a href="conta.html">Minha conta</a> <a href="contato.html">Suporte</a>
-</footer>
-<script src="js/script.js"></script>
+  <header class="topo-site">
+    <div class="topo-marca container-xl">
+      <a class="logo" href="index.html"><img src="img/logo.png" alt="Level Up Store - página inicial"></a>
+      <p class="tagline">Jogos originais pra PC e console, do lançamento ao clássico.</p>
+    </div>
+    <nav class="navbar navbar-expand-lg navbar-dark menu-principal" aria-label="Menu principal">
+      <div class="container-xl">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Abrir menu">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="btn btn-loja btn-sm d-lg-none" href="carrinho.html">Carrinho <span class="badge text-bg-warning" id="cart-count-mobile">0</span></a>
+        <div class="collapse navbar-collapse" id="menu">
+          <ul class="navbar-nav me-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Início</a></li>
+          <li class="nav-item"><a class="nav-link" href="catalogo.html">Catálogo</a></li>
+          <li class="nav-item"><a class="nav-link" href="lista-desejos.html">Desejos</a></li>
+          <li class="nav-item"><a class="nav-link" href="contato.html">Contato</a></li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Comunidade</a>
+              <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="https://discord.com" target="_blank" rel="noopener">Discord ↗</a></li>
+            <li><a class="dropdown-item" href="https://www.youtube.com" target="_blank" rel="noopener">YouTube ↗</a></li>
+            <li><a class="dropdown-item" href="https://www.twitch.tv" target="_blank" rel="noopener">Twitch ↗</a></li>
+              </ul>
+            </li>
+          </ul>
+          <div class="acoes-topo">
+            <a class="btn btn-outline-light" id="link-conta" href="login.html">Entrar</a>
+            <a class="btn btn-loja d-none d-lg-inline-block" href="carrinho.html">Carrinho <span class="badge text-bg-warning" id="cart-count">0</span></a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container-xl conteudo">
+    <section class="cabecalho-pagina revelar">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Início</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Minha conta</li>
+        </ol>
+      </nav>
+      <h1>Minha conta</h1>
+      <p>Seus dados, pedidos e chaves em um só lugar.</p>
+    </section>
+
+    <div id="conta-deslogado" class="estado-vazio revelar" hidden>
+      <h2>Você não está logado</h2>
+      <p>Entre na sua conta pra ver seus pedidos.</p>
+      <div class="d-flex gap-2 justify-content-center">
+        <a class="btn btn-loja btn-lg" href="login.html">Entrar</a>
+        <a class="btn btn-outline-dark btn-lg" href="cadastro.html">Criar conta</a>
+      </div>
+    </div>
+
+    <div id="conta-logado" class="layout-conta revelar">
+      <aside class="card painel perfil">
+        <div class="card-body text-center">
+          <div class="avatar" id="conta-inicial">L</div>
+          <h2 class="h5 fw-bold mb-0" id="conta-nome">Nome</h2>
+          <p class="text-body-secondary" id="conta-email">email</p>
+          <ul class="list-group list-group-flush text-start mb-3">
+            <li class="list-group-item d-flex justify-content-between"><span>Celular</span><strong id="conta-telefone">-</strong></li>
+            <li class="list-group-item d-flex justify-content-between"><span>Plataforma</span><strong id="conta-plataforma">-</strong></li>
+            <li class="list-group-item d-flex justify-content-between"><span>Cliente desde</span><strong id="conta-desde">-</strong></li>
+          </ul>
+          <button type="button" class="btn btn-outline-danger w-100" id="botao-sair">Sair da conta</button>
+        </div>
+      </aside>
+
+      <div class="d-grid gap-3">
+        <div class="numeros-conta">
+          <div class="numero"><strong id="conta-qtd-pedidos">0</strong><span>Pedidos</span></div>
+          <div class="numero"><strong id="conta-total-gasto">R$ 0,00</strong><span>Total investido</span></div>
+          <div class="numero"><strong id="conta-qtd-desejos">0</strong><span>Na lista de desejos</span></div>
+        </div>
+        <div class="card painel">
+          <div class="card-body">
+            <h2 class="h5 fw-bold">Meus pedidos</h2>
+            <div class="table-responsive">
+              <table class="table table-hover align-middle tabela-loja">
+                <thead>
+                  <tr>
+                    <th scope="col">Pedido</th>
+                    <th scope="col">Data</th>
+                    <th scope="col">Jogos</th>
+                    <th scope="col">Pagamento</th>
+                    <th scope="col">Total</th>
+                  </tr>
+                </thead>
+                <tbody id="tabela-pedidos"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="rodape-site">
+    <div class="container-xl rodape-colunas">
+      <div class="rodape-marca">
+        <img src="img/logo.png" alt="Level Up Store">
+        <p>Loja de jogos digitais com chave de ativação na hora, preço justo e suporte de quem também joga.</p>
+      </div>
+      <nav aria-label="Loja">
+        <h2>Loja</h2>
+        <ul>
+          <li><a href="catalogo.html">Catálogo</a></li>
+          <li><a href="catalogo.html?cat=Indie">Indies</a></li>
+          <li><a href="lista-desejos.html">Lista de desejos</a></li>
+          <li><a href="carrinho.html">Carrinho</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Ajuda">
+        <h2>Ajuda</h2>
+        <ul>
+          <li><a href="conta.html">Minha conta</a></li>
+          <li><a href="contato.html">Fale conosco</a></li>
+          <li><a href="contato.html#duvidas">Dúvidas frequentes</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Redes">
+        <h2>Comunidade</h2>
+        <ul>
+          <li><a href="https://discord.com" target="_blank" rel="noopener">Discord ↗</a></li>
+          <li><a href="https://www.youtube.com" target="_blank" rel="noopener">YouTube ↗</a></li>
+          <li><a href="https://www.twitch.tv" target="_blank" rel="noopener">Twitch ↗</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="rodape-base">
+      <p class="container-xl">© 2026 Level Up Store · Projeto acadêmico de Desenvolvimento Front-End para Web · Universidade Positivo</p>
+    </div>
+  </footer>
+
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/dados.js"></script>
+  <script src="js/script.js"></script>
+  <script src="js/conta.js"></script>
 </body>
 </html>

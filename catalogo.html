@@ -1,26 +1,144 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Catálogo | Level Up Store</title>
-<link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Level Up Store: loja de jogos digitais para PC e console.">
+  <title>Catálogo | Level Up Store</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<header class="topo">
-  <a class="logo" href="index.html"><img src="img/logo.png" alt="Level Up Store"></a>
-  <nav><a href="index.html">Início</a><a href="catalogo.html" class=on>Catálogo</a><a href="lista-desejos.html">Desejos</a><a href="contato.html">Contato</a><a href="login.html">Entrar</a></nav>
-  <a class="carrinho" href="carrinho.html">Carrinho <span id="cart-count">0</span></a>
-</header>
-<main>
-<h1>Catálogo</h1>
-<div class="filtros"><input type="search" id="busca" placeholder="Buscar jogo"><select><option>Todas as categorias</option><option>Ação</option><option>RPG</option></select><select><option>Menor preço</option><option>Maior preço</option></select></div>
-<div class="grade" id="lista"><article class="card"><div class="capa">J</div><h3><a href="jogo.html?id=1">Jogo Exemplo 1</a></h3><small>Aventura</small><p class="preco">R$ 89,90</p><button data-add="1" data-nome="Jogo Exemplo 1" data-preco="89,90">Adicionar ao carrinho</button></article><article class="card"><div class="capa">J</div><h3><a href="jogo.html?id=2">Jogo Exemplo 2</a></h3><small>RPG</small><p class="preco">R$ 129,90</p><button data-add="2" data-nome="Jogo Exemplo 2" data-preco="129,90">Adicionar ao carrinho</button></article><article class="card"><div class="capa">J</div><h3><a href="jogo.html?id=3">Jogo Exemplo 3</a></h3><small>Corrida</small><p class="preco">R$ 59,90</p><button data-add="3" data-nome="Jogo Exemplo 3" data-preco="59,90">Adicionar ao carrinho</button></article><article class="card"><div class="capa">J</div><h3><a href="jogo.html?id=4">Jogo Exemplo 4</a></h3><small>Ação</small><p class="preco">R$ 199,90</p><button data-add="4" data-nome="Jogo Exemplo 4" data-preco="199,90">Adicionar ao carrinho</button></article></div>
-</main>
-<footer class="rodape">
-  <p>© 2026 Level Up Store. Projeto de estudo.</p>
-  <a href="conta.html">Minha conta</a> <a href="contato.html">Suporte</a>
-</footer>
-<script src="js/script.js"></script>
+  <header class="topo-site">
+    <div class="topo-marca container-xl">
+      <a class="logo" href="index.html"><img src="img/logo.png" alt="Level Up Store - página inicial"></a>
+      <p class="tagline">Jogos originais pra PC e console, do lançamento ao clássico.</p>
+    </div>
+    <nav class="navbar navbar-expand-lg navbar-dark menu-principal" aria-label="Menu principal">
+      <div class="container-xl">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Abrir menu">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="btn btn-loja btn-sm d-lg-none" href="carrinho.html">Carrinho <span class="badge text-bg-warning" id="cart-count-mobile">0</span></a>
+        <div class="collapse navbar-collapse" id="menu">
+          <ul class="navbar-nav me-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Início</a></li>
+          <li class="nav-item"><a class="nav-link active" aria-current="page" href="catalogo.html">Catálogo</a></li>
+          <li class="nav-item"><a class="nav-link" href="lista-desejos.html">Desejos</a></li>
+          <li class="nav-item"><a class="nav-link" href="contato.html">Contato</a></li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Comunidade</a>
+              <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="https://discord.com" target="_blank" rel="noopener">Discord ↗</a></li>
+            <li><a class="dropdown-item" href="https://www.youtube.com" target="_blank" rel="noopener">YouTube ↗</a></li>
+            <li><a class="dropdown-item" href="https://www.twitch.tv" target="_blank" rel="noopener">Twitch ↗</a></li>
+              </ul>
+            </li>
+          </ul>
+          <div class="acoes-topo">
+            <a class="btn btn-outline-light" id="link-conta" href="login.html">Entrar</a>
+            <a class="btn btn-loja d-none d-lg-inline-block" href="carrinho.html">Carrinho <span class="badge text-bg-warning" id="cart-count">0</span></a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container-xl conteudo">
+    <section class="cabecalho-pagina revelar">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Início</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Catálogo</li>
+        </ol>
+      </nav>
+      <h1>Catálogo</h1>
+      <p>Todos os jogos da loja. Use a busca e os filtros pra achar o próximo da sua lista.</p>
+    </section>
+
+    <section class="barra-filtros revelar" aria-label="Filtros">
+      <div class="row g-2 align-items-end">
+        <div class="col-12 col-md-4">
+          <label class="form-label" for="busca">Buscar</label>
+          <input type="search" class="form-control" id="busca" placeholder="Nome do jogo">
+        </div>
+        <div class="col-6 col-md-2">
+          <label class="form-label" for="filtro-categoria">Categoria</label>
+          <select class="form-select" id="filtro-categoria">
+            <option value="todas">Todas</option>
+          </select>
+        </div>
+        <div class="col-6 col-md-2">
+          <label class="form-label" for="filtro-plataforma">Plataforma</label>
+          <select class="form-select" id="filtro-plataforma">
+            <option value="todas">Todas</option>
+            <option value="PC">PC</option>
+            <option value="PS5">PS5</option>
+            <option value="PS4">PS4</option>
+            <option value="Xbox Series">Xbox Series</option>
+            <option value="Switch">Switch</option>
+          </select>
+        </div>
+        <div class="col-8 col-md-2">
+          <label class="form-label" for="filtro-ordem">Ordenar por</label>
+          <select class="form-select" id="filtro-ordem">
+            <option value="relevancia">Relevância</option>
+            <option value="promocao">Promoções primeiro</option>
+            <option value="menor">Menor preço</option>
+            <option value="maior">Maior preço</option>
+            <option value="nome">Nome (A–Z)</option>
+          </select>
+        </div>
+        <div class="col-4 col-md-2">
+          <button type="button" class="btn btn-outline-secondary w-100" id="limpar-filtros">Limpar</button>
+        </div>
+      </div>
+      <p class="contagem" id="contagem" aria-live="polite"></p>
+    </section>
+
+    <section class="grade-jogos grade-catalogo" id="lista" aria-label="Jogos"></section>
+  </main>
+
+  <footer class="rodape-site">
+    <div class="container-xl rodape-colunas">
+      <div class="rodape-marca">
+        <img src="img/logo.png" alt="Level Up Store">
+        <p>Loja de jogos digitais com chave de ativação na hora, preço justo e suporte de quem também joga.</p>
+      </div>
+      <nav aria-label="Loja">
+        <h2>Loja</h2>
+        <ul>
+          <li><a href="catalogo.html">Catálogo</a></li>
+          <li><a href="catalogo.html?cat=Indie">Indies</a></li>
+          <li><a href="lista-desejos.html">Lista de desejos</a></li>
+          <li><a href="carrinho.html">Carrinho</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Ajuda">
+        <h2>Ajuda</h2>
+        <ul>
+          <li><a href="conta.html">Minha conta</a></li>
+          <li><a href="contato.html">Fale conosco</a></li>
+          <li><a href="contato.html#duvidas">Dúvidas frequentes</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Redes">
+        <h2>Comunidade</h2>
+        <ul>
+          <li><a href="https://discord.com" target="_blank" rel="noopener">Discord ↗</a></li>
+          <li><a href="https://www.youtube.com" target="_blank" rel="noopener">YouTube ↗</a></li>
+          <li><a href="https://www.twitch.tv" target="_blank" rel="noopener">Twitch ↗</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="rodape-base">
+      <p class="container-xl">© 2026 Level Up Store · Projeto acadêmico de Desenvolvimento Front-End para Web · Universidade Positivo</p>
+    </div>
+  </footer>
+
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/dados.js"></script>
+  <script src="js/script.js"></script>
+  <script src="js/catalogo.js"></script>
 </body>
 </html>

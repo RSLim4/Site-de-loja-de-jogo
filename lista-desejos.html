@@ -1,24 +1,108 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Lista de desejos | Level Up Store</title>
-<link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Level Up Store: loja de jogos digitais para PC e console.">
+  <title>Lista de desejos | Level Up Store</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<header class="topo">
-  <a class="logo" href="index.html"><img src="img/logo.png" alt="Level Up Store"></a>
-  <nav><a href="index.html">Início</a><a href="catalogo.html">Catálogo</a><a href="lista-desejos.html" class=on>Desejos</a><a href="contato.html">Contato</a><a href="login.html">Entrar</a></nav>
-  <a class="carrinho" href="carrinho.html">Carrinho <span id="cart-count">0</span></a>
-</header>
-<main>
-<h1>Lista de desejos</h1><div class="grade"><article class="card"><div class="capa">J</div><h3><a href="jogo.html?id=1">Jogo Exemplo 1</a></h3><small>Aventura</small><p class="preco">R$ 89,90</p><button data-add="1" data-nome="Jogo Exemplo 1" data-preco="89,90">Adicionar ao carrinho</button></article></div>
-</main>
-<footer class="rodape">
-  <p>© 2026 Level Up Store. Projeto de estudo.</p>
-  <a href="conta.html">Minha conta</a> <a href="contato.html">Suporte</a>
-</footer>
-<script src="js/script.js"></script>
+  <header class="topo-site">
+    <div class="topo-marca envoltorio">
+      <a class="logo" href="index.html"><img src="img/logo.png" alt="Level Up Store - página inicial"></a>
+      <p class="tagline">Jogos originais pra PC e console, do lançamento ao clássico.</p>
+    </div>
+    <nav class="menu-puro" aria-label="Menu principal">
+      <div class="envoltorio menu-puro-linha">
+        <button type="button" class="menu-toggle" id="menu-toggle" aria-controls="menu-links" aria-expanded="false">☰ Menu</button>
+        <ul class="menu-links" id="menu-links">
+        <li><a href="index.html">Início</a></li>
+        <li><a href="catalogo.html">Catálogo</a></li>
+        <li><a href="lista-desejos.html" class="ativo" aria-current="page">Desejos</a></li>
+        <li><a href="contato.html">Contato</a></li>
+        <li class="submenu">
+            <span>Comunidade ▾</span>
+            <ul>
+            <li><a href="https://discord.com" target="_blank" rel="noopener">Discord ↗</a></li>
+            <li><a href="https://www.youtube.com" target="_blank" rel="noopener">YouTube ↗</a></li>
+            <li><a href="https://www.twitch.tv" target="_blank" rel="noopener">Twitch ↗</a></li>
+            </ul>
+          </li>
+        </ul>
+        <div class="acoes-topo">
+          <a class="botao botao-contorno-claro" id="link-conta" href="login.html">Entrar</a>
+          <a class="botao botao-principal" href="carrinho.html">Carrinho <span class="contador" id="cart-count">0</span></a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="envoltorio conteudo">
+    <section class="cabecalho-pagina revelar">
+      <nav aria-label="Você está em">
+        <ol class="migalhas">
+          <li><a href="index.html">Início</a></li>
+          <li aria-current="page">Lista de desejos</li>
+        </ol>
+      </nav>
+      <h1>Lista de desejos</h1>
+      <p>Os jogos que você está de olho. A gente avisa quando entrarem em promoção.</p>
+    </section>
+
+    <section id="resumo-desejos" class="resumo-desejos revelar" hidden>
+      <p><strong id="desejos-qtd">0</strong> jogos salvos · total de <strong id="desejos-soma">R$ 0,00</strong></p>
+      <button type="button" class="botao botao-principal" id="tudo-carrinho">Mover tudo pro carrinho</button>
+    </section>
+
+    <section class="grade-jogos" id="grade-desejos" aria-label="Jogos desejados"></section>
+
+    <section id="desejos-vazio" class="estado-vazio revelar" hidden>
+      <h2>Sua lista está vazia</h2>
+      <p>Toque no ♡ dos jogos no catálogo pra salvar aqui.</p>
+      <a class="botao botao-principal botao-grande" href="catalogo.html">Explorar catálogo</a>
+    </section>
+  </main>
+
+  <footer class="rodape-site">
+    <div class="envoltorio rodape-colunas">
+      <div class="rodape-marca">
+        <img src="img/logo.png" alt="Level Up Store">
+        <p>Loja de jogos digitais com chave de ativação na hora, preço justo e suporte de quem também joga.</p>
+      </div>
+      <nav aria-label="Loja">
+        <h2>Loja</h2>
+        <ul>
+          <li><a href="catalogo.html">Catálogo</a></li>
+          <li><a href="catalogo.html?cat=Indie">Indies</a></li>
+          <li><a href="lista-desejos.html">Lista de desejos</a></li>
+          <li><a href="carrinho.html">Carrinho</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Ajuda">
+        <h2>Ajuda</h2>
+        <ul>
+          <li><a href="conta.html">Minha conta</a></li>
+          <li><a href="contato.html">Fale conosco</a></li>
+          <li><a href="contato.html#duvidas">Dúvidas frequentes</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Redes">
+        <h2>Comunidade</h2>
+        <ul>
+          <li><a href="https://discord.com" target="_blank" rel="noopener">Discord ↗</a></li>
+          <li><a href="https://www.youtube.com" target="_blank" rel="noopener">YouTube ↗</a></li>
+          <li><a href="https://www.twitch.tv" target="_blank" rel="noopener">Twitch ↗</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="rodape-base">
+      <p class="envoltorio">© 2026 Level Up Store · Projeto acadêmico de Desenvolvimento Front-End para Web · Universidade Positivo</p>
+    </div>
+  </footer>
+
+  <script src="js/dados.js"></script>
+  <script src="js/script.js"></script>
+  <script src="js/desejos.js"></script>
 </body>
 </html>

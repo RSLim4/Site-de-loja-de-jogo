@@ -1,26 +1,354 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Início | Level Up Store</title>
-<link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Level Up Store: loja de jogos digitais para PC e console.">
+  <title>Início | Level Up Store</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    #destaques-laterais .mini-capa {
+      width: 64px;
+      border-radius: 6px;
+    }
+  </style>
 </head>
 <body>
-<header class="topo">
-  <a class="logo" href="index.html"><img src="img/logo.png" alt="Level Up Store"></a>
-  <nav><a href="index.html" class=on>Início</a><a href="catalogo.html">Catálogo</a><a href="lista-desejos.html">Desejos</a><a href="contato.html">Contato</a><a href="login.html">Entrar</a></nav>
-  <a class="carrinho" href="carrinho.html">Carrinho <span id="cart-count">0</span></a>
-</header>
-<main>
-<section class="hero"><h1>Seu próximo jogo está aqui.</h1><p>Lançamentos, promoções e clássicos para PC e console.</p><a class="btn" href="catalogo.html">Ver catálogo</a></section>
-<section><h2>Destaques</h2><div class="grade"><article class="card"><div class="capa">J</div><h3><a href="jogo.html?id=1">Jogo Exemplo 1</a></h3><small>Aventura</small><p class="preco">R$ 89,90</p><button data-add="1" data-nome="Jogo Exemplo 1" data-preco="89,90">Adicionar ao carrinho</button></article><article class="card"><div class="capa">J</div><h3><a href="jogo.html?id=2">Jogo Exemplo 2</a></h3><small>RPG</small><p class="preco">R$ 129,90</p><button data-add="2" data-nome="Jogo Exemplo 2" data-preco="129,90">Adicionar ao carrinho</button></article><article class="card"><div class="capa">J</div><h3><a href="jogo.html?id=3">Jogo Exemplo 3</a></h3><small>Corrida</small><p class="preco">R$ 59,90</p><button data-add="3" data-nome="Jogo Exemplo 3" data-preco="59,90">Adicionar ao carrinho</button></article><article class="card"><div class="capa">J</div><h3><a href="jogo.html?id=4">Jogo Exemplo 4</a></h3><small>Ação</small><p class="preco">R$ 199,90</p><button data-add="4" data-nome="Jogo Exemplo 4" data-preco="199,90">Adicionar ao carrinho</button></article></div></section>
-<section><h2>Categorias</h2><div class="grade"><a class="cat" href="catalogo.html">Ação</a><a class="cat" href="catalogo.html">RPG</a><a class="cat" href="catalogo.html">Corrida</a><a class="cat" href="catalogo.html">Aventura</a></div></section>
-</main>
-<footer class="rodape">
-  <p>© 2026 Level Up Store. Projeto de estudo.</p>
-  <a href="conta.html">Minha conta</a> <a href="contato.html">Suporte</a>
-</footer>
-<script src="js/script.js"></script>
+  <header class="topo-site">
+    <div class="topo-marca container-xl">
+      <a class="logo" href="index.html"><img src="img/logo.png" alt="Level Up Store - página inicial"></a>
+      <p class="tagline">Jogos originais pra PC e console, do lançamento ao clássico.</p>
+    </div>
+    <nav class="navbar navbar-expand-lg navbar-dark menu-principal" aria-label="Menu principal">
+      <div class="container-xl">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Abrir menu">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="btn btn-loja btn-sm d-lg-none" href="carrinho.html">Carrinho <span class="badge text-bg-warning" id="cart-count-mobile">0</span></a>
+        <div class="collapse navbar-collapse" id="menu">
+          <ul class="navbar-nav me-auto">
+          <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.html">Início</a></li>
+          <li class="nav-item"><a class="nav-link" href="catalogo.html">Catálogo</a></li>
+          <li class="nav-item"><a class="nav-link" href="lista-desejos.html">Desejos</a></li>
+          <li class="nav-item"><a class="nav-link" href="contato.html">Contato</a></li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Comunidade</a>
+              <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="https://discord.com" target="_blank" rel="noopener">Discord ↗</a></li>
+            <li><a class="dropdown-item" href="https://www.youtube.com" target="_blank" rel="noopener">YouTube ↗</a></li>
+            <li><a class="dropdown-item" href="https://www.twitch.tv" target="_blank" rel="noopener">Twitch ↗</a></li>
+              </ul>
+            </li>
+          </ul>
+          <div class="acoes-topo">
+            <a class="btn btn-outline-light" id="link-conta" href="login.html">Entrar</a>
+            <a class="btn btn-loja d-none d-lg-inline-block" href="carrinho.html">Carrinho <span class="badge text-bg-warning" id="cart-count">0</span></a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container-xl conteudo">
+    <section class="vitrine revelar">
+      <div id="carrossel" class="carousel slide carousel-fade destaque-principal" data-bs-ride="carousel" data-bs-interval="5000">
+        <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carrossel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Destaque 1"></button>
+        <button type="button" data-bs-target="#carrossel" data-bs-slide-to="1" aria-label="Destaque 2"></button>
+        <button type="button" data-bs-target="#carrossel" data-bs-slide-to="2" aria-label="Destaque 3"></button>
+        </div>
+        <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="img/banners/elden-ring.svg" class="d-block w-100" alt="Arte de Elden Ring">
+          <div class="carousel-caption text-start">
+            <span class="selo">Mais vendido</span>
+            <h1>Elden Ring</h1>
+            <p>Explore as Terras Intermédias no RPG de ação mais premiado dos últimos anos.</p>
+            <a class="btn btn-loja" href="jogo.html?id=1">Ver jogo</a>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="img/banners/hollow-knight.svg" class="d-block w-100" alt="Arte de Hollow Knight">
+          <div class="carousel-caption text-start">
+            <span class="selo">-50% essa semana</span>
+            <h2 class="h1">Hollow Knight</h2>
+            <p>Um reino subterrâneo enorme pra desbravar, com combate desafiador.</p>
+            <a class="btn btn-loja" href="jogo.html?id=2">Ver jogo</a>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="img/banners/forza-horizon-5.svg" class="d-block w-100" alt="Arte de Forza Horizon 5">
+          <div class="carousel-caption text-start">
+            <span class="selo">Novo no catálogo</span>
+            <h2 class="h1">Forza Horizon 5</h2>
+            <p>Corridas em mundo aberto pelas paisagens do México.</p>
+            <a class="btn btn-loja" href="jogo.html?id=3">Ver jogo</a>
+          </div>
+        </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carrossel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Anterior</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carrossel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Próximo</span>
+        </button>
+      </div>
+
+      <aside id="destaques-laterais" class="destaques-laterais" aria-label="Ofertas rápidas">
+        <h2 class="titulo-lateral">Ofertas relâmpago</h2>
+      <a class="mini-destaque" href="jogo.html?id=4">
+        <img class="mini-capa" src="img/jogos/stardew-valley.svg" alt="Capa de Stardew Valley">
+        <span><strong>Stardew Valley</strong><small>Simulação de fazenda · R$ 24,99</small></span>
+      </a>
+      <a class="mini-destaque" href="jogo.html?id=6">
+        <img class="mini-capa" src="img/jogos/hades.svg" alt="Capa de Hades">
+        <span><strong>Hades</strong><small>Roguelike de ação · R$ 47,49</small></span>
+      </a>
+      <a class="mini-destaque" href="jogo.html?id=8">
+        <img class="mini-capa" src="img/jogos/red-dead-2.svg" alt="Capa de Red Dead Redemption 2">
+        <span><strong>Red Dead Redemption 2</strong><small>Aventura de faroeste · R$ 89,90</small></span>
+      </a>
+      </aside>
+    </section>
+
+    <section class="vantagens revelar" aria-label="Vantagens">
+      <div class="vantagem"><span class="vantagem-icone">⚡</span><div><strong>Entrega imediata</strong><small>Chave no e-mail em segundos</small></div></div>
+      <div class="vantagem"><span class="vantagem-icone">🔒</span><div><strong>Compra segura</strong><small>Pix, cartão ou boleto</small></div></div>
+      <div class="vantagem"><span class="vantagem-icone">🎮</span><div><strong>Jogos originais</strong><small>Chaves oficiais das distribuidoras</small></div></div>
+      <div class="vantagem"><span class="vantagem-icone">💬</span><div><strong>Suporte gamer</strong><small>Atendimento de seg. a sex.</small></div></div>
+    </section>
+
+    <section class="revelar">
+      <div class="titulo-secao">
+        <h2>Em alta</h2>
+        <a href="catalogo.html">Ver catálogo completo →</a>
+      </div>
+      <div class="grade-jogos">
+        <article class="card card-jogo">
+          <div class="card-jogo-capa">
+            <a href="jogo.html?id=1"><img src="img/jogos/elden-ring.svg" class="card-img-top" alt="Capa de Elden Ring"></a>
+            <button type="button" class="botao-desejo" data-desejo="1" aria-label="Lista de desejos">♡</button>
+          </div>
+          <div class="card-body card-jogo-corpo">
+            <small class="genero">RPG de ação</small>
+            <h3 class="card-title"><a href="jogo.html?id=1">Elden Ring</a></h3>
+            <p class="card-text card-jogo-texto">Mundo aberto sombrio criado pela FromSoftware.</p>
+            <p class="preco">R$ 229,90</p>
+            <button type="button" class="btn btn-loja w-100" data-add="1">Adicionar ao carrinho</button>
+          </div>
+        </article>
+        <article class="card card-jogo">
+          <div class="card-jogo-capa">
+            <a href="jogo.html?id=5"><img src="img/jogos/cyberpunk-2077.svg" class="card-img-top" alt="Capa de Cyberpunk 2077"></a>
+            <span class="selo-desconto">-50%</span>
+            <button type="button" class="botao-desejo" data-desejo="5" aria-label="Lista de desejos">♡</button>
+          </div>
+          <div class="card-body card-jogo-corpo">
+            <small class="genero">RPG de mundo aberto</small>
+            <h3 class="card-title"><a href="jogo.html?id=5">Cyberpunk 2077</a></h3>
+            <p class="card-text card-jogo-texto">Night City te espera numa história futurista.</p>
+            <p class="preco"><s>R$ 199,90</s> R$ 99,95</p>
+            <button type="button" class="btn btn-loja w-100" data-add="5">Adicionar ao carrinho</button>
+          </div>
+        </article>
+        <article class="card card-jogo">
+          <div class="card-jogo-capa">
+            <a href="jogo.html?id=10"><img src="img/jogos/baldurs-gate-3.svg" class="card-img-top" alt="Capa de Baldur's Gate 3"></a>
+            <button type="button" class="botao-desejo" data-desejo="10" aria-label="Lista de desejos">♡</button>
+          </div>
+          <div class="card-body card-jogo-corpo">
+            <small class="genero">RPG por turnos</small>
+            <h3 class="card-title"><a href="jogo.html?id=10">Baldur's Gate 3</a></h3>
+            <p class="card-text card-jogo-texto">RPG de fantasia baseado em Dungeons & Dragons.</p>
+            <p class="preco">R$ 199,99</p>
+            <button type="button" class="btn btn-loja w-100" data-add="10">Adicionar ao carrinho</button>
+          </div>
+        </article>
+        <article class="card card-jogo">
+          <div class="card-jogo-capa">
+            <a href="jogo.html?id=3"><img src="img/jogos/forza-horizon-5.svg" class="card-img-top" alt="Capa de Forza Horizon 5"></a>
+            <button type="button" class="botao-desejo" data-desejo="3" aria-label="Lista de desejos">♡</button>
+          </div>
+          <div class="card-body card-jogo-corpo">
+            <small class="genero">Corrida</small>
+            <h3 class="card-title"><a href="jogo.html?id=3">Forza Horizon 5</a></h3>
+            <p class="card-text card-jogo-texto">Centenas de carros e um mapa gigante pra acelerar.</p>
+            <p class="preco">R$ 249,00</p>
+            <button type="button" class="btn btn-loja w-100" data-add="3">Adicionar ao carrinho</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="faixa-cupom revelar">
+      <div>
+        <span class="selo">Cupom de boas-vindas</span>
+        <h2>10% OFF na primeira compra</h2>
+        <p>Use o código <strong>LEVELUP10</strong> no carrinho e economize no seu próximo jogo.</p>
+      </div>
+      <a class="btn btn-warning btn-lg fw-bold" href="cadastro.html">Criar conta grátis</a>
+    </section>
+
+    <section class="revelar">
+      <div class="titulo-secao">
+        <h2>Promoções da semana</h2>
+        <a href="catalogo.html">Ver todas →</a>
+      </div>
+      <div class="grade-jogos">
+        <article class="card card-jogo">
+          <div class="card-jogo-capa">
+            <a href="jogo.html?id=2"><img src="img/jogos/hollow-knight.svg" class="card-img-top" alt="Capa de Hollow Knight"></a>
+            <span class="selo-desconto">-50%</span>
+            <button type="button" class="botao-desejo" data-desejo="2" aria-label="Lista de desejos">♡</button>
+          </div>
+          <div class="card-body card-jogo-corpo">
+            <small class="genero">Metroidvania</small>
+            <h3 class="card-title"><a href="jogo.html?id=2">Hollow Knight</a></h3>
+            <p class="card-text card-jogo-texto">Aventura 2D desenhada à mão num reino em ruínas.</p>
+            <p class="preco"><s>R$ 46,99</s> R$ 23,49</p>
+            <button type="button" class="btn btn-loja w-100" data-add="2">Adicionar ao carrinho</button>
+          </div>
+        </article>
+        <article class="card card-jogo">
+          <div class="card-jogo-capa">
+            <a href="jogo.html?id=6"><img src="img/jogos/hades.svg" class="card-img-top" alt="Capa de Hades"></a>
+            <span class="selo-desconto">-36%</span>
+            <button type="button" class="botao-desejo" data-desejo="6" aria-label="Lista de desejos">♡</button>
+          </div>
+          <div class="card-body card-jogo-corpo">
+            <small class="genero">Roguelike de ação</small>
+            <h3 class="card-title"><a href="jogo.html?id=6">Hades</a></h3>
+            <p class="card-text card-jogo-texto">Fuja do submundo com a ajuda dos deuses do Olimpo.</p>
+            <p class="preco"><s>R$ 73,99</s> R$ 47,49</p>
+            <button type="button" class="btn btn-loja w-100" data-add="6">Adicionar ao carrinho</button>
+          </div>
+        </article>
+        <article class="card card-jogo">
+          <div class="card-jogo-capa">
+            <a href="jogo.html?id=8"><img src="img/jogos/red-dead-2.svg" class="card-img-top" alt="Capa de Red Dead Redemption 2"></a>
+            <span class="selo-desconto">-64%</span>
+            <button type="button" class="botao-desejo" data-desejo="8" aria-label="Lista de desejos">♡</button>
+          </div>
+          <div class="card-body card-jogo-corpo">
+            <small class="genero">Aventura de faroeste</small>
+            <h3 class="card-title"><a href="jogo.html?id=8">Red Dead Redemption 2</a></h3>
+            <p class="card-text card-jogo-texto">A saga de Arthur Morgan no fim do Velho Oeste.</p>
+            <p class="preco"><s>R$ 249,90</s> R$ 89,90</p>
+            <button type="button" class="btn btn-loja w-100" data-add="8">Adicionar ao carrinho</button>
+          </div>
+        </article>
+        <article class="card card-jogo">
+          <div class="card-jogo-capa">
+            <a href="jogo.html?id=9"><img src="img/jogos/celeste.svg" class="card-img-top" alt="Capa de Celeste"></a>
+            <button type="button" class="botao-desejo" data-desejo="9" aria-label="Lista de desejos">♡</button>
+          </div>
+          <div class="card-body card-jogo-corpo">
+            <small class="genero">Plataforma</small>
+            <h3 class="card-title"><a href="jogo.html?id=9">Celeste</a></h3>
+            <p class="card-text card-jogo-texto">Escale a montanha em um plataforma preciso.</p>
+            <p class="preco">R$ 36,99</p>
+            <button type="button" class="btn btn-loja w-100" data-add="9">Adicionar ao carrinho</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="revelar">
+      <div class="titulo-secao">
+        <h2>Navegue por categoria</h2>
+      </div>
+      <div class="categorias">
+        <a class="cat" href="catalogo.html?cat=Ação">Ação</a>
+        <a class="cat" href="catalogo.html?cat=RPG">RPG</a>
+        <a class="cat" href="catalogo.html?cat=Aventura">Aventura</a>
+        <a class="cat" href="catalogo.html?cat=Corrida">Corrida</a>
+        <a class="cat" href="catalogo.html?cat=Esporte">Esporte</a>
+        <a class="cat" href="catalogo.html?cat=Indie">Indie</a>
+      </div>
+    </section>
+
+    <section class="revelar">
+      <div class="titulo-secao">
+        <h2>Novidades</h2>
+      </div>
+      <div class="noticias">
+        <article class="noticia">
+          <time datetime="2026-10-20">20 out 2026</time>
+          <h3>Promoção de Halloween começa sexta</h3>
+          <p>Jogos de terror e ação com até 70% de desconto durante o fim de semana.</p>
+        </article>
+        <article class="noticia">
+          <time datetime="2026-10-14">14 out 2026</time>
+          <h3>EA Sports FC 25 chegou ao catálogo</h3>
+          <p>Já disponível pra PC, PlayStation e Xbox, com entrega da chave na hora.</p>
+        </article>
+        <article class="noticia">
+          <time datetime="2026-10-02">02 out 2026</time>
+          <h3>Agora aceitamos Pix</h3>
+          <p>Pague com Pix e receba seu jogo em segundos, sem nenhuma taxa extra.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="sobre-local revelar">
+      <article class="bloco-info">
+        <h2>Sobre a Level Up</h2>
+        <p>Somos uma loja de jogos digitais feita por quem joga. Selecionamos lançamentos, clássicos e indies com preço justo e entrega imediata da chave de ativação.</p>
+        <a class="btn btn-outline-dark" href="contato.html">Fale com a gente</a>
+      </article>
+      <article class="bloco-info" style="border-left-color: var(--accent);">
+        <h2>Onde estamos</h2>
+        <address>
+          Rua dos Jogadores, 1000 – Centro<br>
+          Curitiba – PR<br>
+          Atendimento: seg. a sex., das 9h às 18h
+        </address>
+      </article>
+    </section>
+  </main>
+
+  <footer class="rodape-site">
+    <div class="container-xl rodape-colunas">
+      <div class="rodape-marca">
+        <img src="img/logo.png" alt="Level Up Store">
+        <p>Loja de jogos digitais com chave de ativação na hora, preço justo e suporte de quem também joga.</p>
+      </div>
+      <nav aria-label="Loja">
+        <h2>Loja</h2>
+        <ul>
+          <li><a href="catalogo.html">Catálogo</a></li>
+          <li><a href="catalogo.html?cat=Indie">Indies</a></li>
+          <li><a href="lista-desejos.html">Lista de desejos</a></li>
+          <li><a href="carrinho.html">Carrinho</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Ajuda">
+        <h2>Ajuda</h2>
+        <ul>
+          <li><a href="conta.html">Minha conta</a></li>
+          <li><a href="contato.html">Fale conosco</a></li>
+          <li><a href="contato.html#duvidas">Dúvidas frequentes</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Redes">
+        <h2>Comunidade</h2>
+        <ul>
+          <li><a href="https://discord.com" target="_blank" rel="noopener">Discord ↗</a></li>
+          <li><a href="https://www.youtube.com" target="_blank" rel="noopener">YouTube ↗</a></li>
+          <li><a href="https://www.twitch.tv" target="_blank" rel="noopener">Twitch ↗</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="rodape-base">
+      <p class="container-xl">© 2026 Level Up Store · Projeto acadêmico de Desenvolvimento Front-End para Web · Universidade Positivo</p>
+    </div>
+  </footer>
+
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/dados.js"></script>
+  <script src="js/script.js"></script>
 </body>
 </html>

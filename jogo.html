@@ -1,25 +1,189 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Detalhe do jogo | Level Up Store</title>
-<link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Level Up Store: loja de jogos digitais para PC e console.">
+  <title>Jogo | Level Up Store</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<header class="topo">
-  <a class="logo" href="index.html"><img src="img/logo.png" alt="Level Up Store"></a>
-  <nav><a href="index.html">Início</a><a href="catalogo.html">Catálogo</a><a href="lista-desejos.html">Desejos</a><a href="contato.html">Contato</a><a href="login.html">Entrar</a></nav>
-  <a class="carrinho" href="carrinho.html">Carrinho <span id="cart-count">0</span></a>
-</header>
-<main>
-<section class="detalhe"><div class="capa grande">J</div><div><h1>Nome do jogo</h1><p>Gênero · Plataforma · Classificação</p><p class="preco">R$ 0,00</p><button data-add="1" data-nome="Jogo Exemplo 1" data-preco="89,90">Adicionar ao carrinho</button> <a class="btn sec" href="lista-desejos.html">Lista de desejos</a></div></section>
-<section><h2>Descrição</h2><p>Texto sobre o jogo.</p><h2>Requisitos</h2><p>Mínimos e recomendados.</p><h2>Avaliações</h2><p>Comentários dos jogadores.</p></section>
-</main>
-<footer class="rodape">
-  <p>© 2026 Level Up Store. Projeto de estudo.</p>
-  <a href="conta.html">Minha conta</a> <a href="contato.html">Suporte</a>
-</footer>
-<script src="js/script.js"></script>
+  <header class="topo-site">
+    <div class="topo-marca container-xl">
+      <a class="logo" href="index.html"><img src="img/logo.png" alt="Level Up Store - página inicial"></a>
+      <p class="tagline">Jogos originais pra PC e console, do lançamento ao clássico.</p>
+    </div>
+    <nav class="navbar navbar-expand-lg navbar-dark menu-principal" aria-label="Menu principal">
+      <div class="container-xl">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Abrir menu">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="btn btn-loja btn-sm d-lg-none" href="carrinho.html">Carrinho <span class="badge text-bg-warning" id="cart-count-mobile">0</span></a>
+        <div class="collapse navbar-collapse" id="menu">
+          <ul class="navbar-nav me-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Início</a></li>
+          <li class="nav-item"><a class="nav-link" href="catalogo.html">Catálogo</a></li>
+          <li class="nav-item"><a class="nav-link" href="lista-desejos.html">Desejos</a></li>
+          <li class="nav-item"><a class="nav-link" href="contato.html">Contato</a></li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Comunidade</a>
+              <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="https://discord.com" target="_blank" rel="noopener">Discord ↗</a></li>
+            <li><a class="dropdown-item" href="https://www.youtube.com" target="_blank" rel="noopener">YouTube ↗</a></li>
+            <li><a class="dropdown-item" href="https://www.twitch.tv" target="_blank" rel="noopener">Twitch ↗</a></li>
+              </ul>
+            </li>
+          </ul>
+          <div class="acoes-topo">
+            <a class="btn btn-outline-light" id="link-conta" href="login.html">Entrar</a>
+            <a class="btn btn-loja d-none d-lg-inline-block" href="carrinho.html">Carrinho <span class="badge text-bg-warning" id="cart-count">0</span></a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container-xl conteudo">
+    <nav aria-label="breadcrumb" class="revelar">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html">Início</a></li>
+        <li class="breadcrumb-item"><a href="catalogo.html">Catálogo</a></li>
+        <li class="breadcrumb-item active" aria-current="page" id="migalha-jogo">Jogo</li>
+      </ol>
+    </nav>
+
+    <section class="detalhe-jogo revelar">
+      <img id="jogo-capa" class="detalhe-capa" src="img/jogos/elden-ring.svg" alt="Capa do jogo">
+      <div class="detalhe-info">
+        <small class="genero" id="jogo-genero">Gênero</small>
+        <h1 id="jogo-nome">Nome do jogo</h1>
+        <p class="detalhe-plataformas" id="jogo-plataformas"></p>
+        <p class="detalhe-classificacao">Classificação indicativa: <strong id="jogo-classificacao">Livre</strong></p>
+        <div class="caixa-compra">
+          <p class="detalhe-preco" id="jogo-preco">R$ 0,00</p>
+          <p class="detalhe-entrega">⚡ Chave de ativação enviada por e-mail na hora</p>
+          <div class="d-flex flex-wrap gap-2">
+            <button type="button" class="btn btn-loja btn-lg" id="jogo-comprar" data-add="1">Adicionar ao carrinho</button>
+            <button type="button" class="btn btn-outline-dark btn-lg botao-desejo-texto" id="jogo-desejo" data-desejo="1" data-texto="sim">♡ Lista de desejos</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="midia-jogo revelar">
+      <div class="midia-video">
+        <h2>Trailer</h2>
+        <video controls preload="metadata" poster="img/banners/elden-ring.svg">
+          <source src="video/trailer-level-up.mp4" type="video/mp4">
+          Seu navegador não reproduz vídeos.
+        </video>
+      </div>
+      <div class="midia-lado">
+        <h2>Sobre o jogo</h2>
+        <p id="jogo-descricao">Descrição do jogo.</p>
+        <div class="trilha">
+          <h3>Trilha sonora</h3>
+          <p>Ouça um trecho da trilha antes de comprar.</p>
+          <audio controls preload="metadata">
+            <source src="video/trilha-sonora.mp3" type="audio/mpeg">
+            Seu navegador não reproduz áudio.
+          </audio>
+        </div>
+      </div>
+    </section>
+
+    <section class="revelar">
+      <div class="titulo-secao">
+        <h2>Requisitos de sistema (PC)</h2>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-striped table-hover align-middle tabela-loja">
+          <caption>Configurações sugeridas pela distribuidora do jogo.</caption>
+          <thead>
+            <tr>
+              <th scope="col">Componente</th>
+              <th scope="col">Mínimo</th>
+              <th scope="col">Recomendado</th>
+              <th scope="col">Ultra</th>
+            </tr>
+          </thead>
+          <tbody id="tabela-requisitos"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="revelar">
+      <div class="titulo-secao">
+        <h2>O que os jogadores dizem</h2>
+      </div>
+      <div class="avaliacoes">
+        <blockquote class="avaliacao">
+          <p class="estrelas" aria-label="5 de 5 estrelas">★★★★★</p>
+          <p>"Comprei e a chave chegou na hora. Já tô jogando!"</p>
+          <footer>— Marina, PC</footer>
+        </blockquote>
+        <blockquote class="avaliacao">
+          <p class="estrelas" aria-label="4 de 5 estrelas">★★★★☆</p>
+          <p>"Preço bem melhor que em outras lojas. Recomendo."</p>
+          <footer>— João, PS5</footer>
+        </blockquote>
+        <blockquote class="avaliacao">
+          <p class="estrelas" aria-label="5 de 5 estrelas">★★★★★</p>
+          <p>"Suporte me ajudou a ativar em poucos minutos."</p>
+          <footer>— Bruno, Xbox</footer>
+        </blockquote>
+      </div>
+    </section>
+
+    <section class="revelar">
+      <div class="titulo-secao">
+        <h2>Você também pode gostar</h2>
+      </div>
+      <div class="grade-jogos" id="sugestoes"></div>
+    </section>
+  </main>
+
+  <footer class="rodape-site">
+    <div class="container-xl rodape-colunas">
+      <div class="rodape-marca">
+        <img src="img/logo.png" alt="Level Up Store">
+        <p>Loja de jogos digitais com chave de ativação na hora, preço justo e suporte de quem também joga.</p>
+      </div>
+      <nav aria-label="Loja">
+        <h2>Loja</h2>
+        <ul>
+          <li><a href="catalogo.html">Catálogo</a></li>
+          <li><a href="catalogo.html?cat=Indie">Indies</a></li>
+          <li><a href="lista-desejos.html">Lista de desejos</a></li>
+          <li><a href="carrinho.html">Carrinho</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Ajuda">
+        <h2>Ajuda</h2>
+        <ul>
+          <li><a href="conta.html">Minha conta</a></li>
+          <li><a href="contato.html">Fale conosco</a></li>
+          <li><a href="contato.html#duvidas">Dúvidas frequentes</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Redes">
+        <h2>Comunidade</h2>
+        <ul>
+          <li><a href="https://discord.com" target="_blank" rel="noopener">Discord ↗</a></li>
+          <li><a href="https://www.youtube.com" target="_blank" rel="noopener">YouTube ↗</a></li>
+          <li><a href="https://www.twitch.tv" target="_blank" rel="noopener">Twitch ↗</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="rodape-base">
+      <p class="container-xl">© 2026 Level Up Store · Projeto acadêmico de Desenvolvimento Front-End para Web · Universidade Positivo</p>
+    </div>
+  </footer>
+
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/dados.js"></script>
+  <script src="js/script.js"></script>
+  <script src="js/jogo.js"></script>
 </body>
 </html>

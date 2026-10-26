@@ -1,24 +1,214 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Finalizar compra | Level Up Store</title>
-<link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Level Up Store: loja de jogos digitais para PC e console.">
+  <title>Pagamento | Level Up Store</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<header class="topo">
-  <a class="logo" href="index.html"><img src="img/logo.png" alt="Level Up Store"></a>
-  <nav><a href="index.html">Início</a><a href="catalogo.html">Catálogo</a><a href="lista-desejos.html">Desejos</a><a href="contato.html">Contato</a><a href="login.html">Entrar</a></nav>
-  <a class="carrinho" href="carrinho.html">Carrinho <span id="cart-count">0</span></a>
-</header>
-<main>
-<h1>Finalizar compra</h1><form class="form"><fieldset><legend>Dados pessoais</legend><label>Nome <input required></label><label>E-mail <input type="email" required></label></fieldset><fieldset><legend>Pagamento</legend><label><input type="radio" name="p" checked> Pix</label><label><input type="radio" name="p"> Cartão</label><label><input type="radio" name="p"> Boleto</label></fieldset><button>Confirmar pedido</button></form>
-</main>
-<footer class="rodape">
-  <p>© 2026 Level Up Store. Projeto de estudo.</p>
-  <a href="conta.html">Minha conta</a> <a href="contato.html">Suporte</a>
-</footer>
-<script src="js/script.js"></script>
+  <header class="topo-site">
+    <div class="topo-marca container-xl">
+      <a class="logo" href="index.html"><img src="img/logo.png" alt="Level Up Store - página inicial"></a>
+      <p class="tagline">Jogos originais pra PC e console, do lançamento ao clássico.</p>
+    </div>
+    <nav class="navbar navbar-expand-lg navbar-dark menu-principal" aria-label="Menu principal">
+      <div class="container-xl">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Abrir menu">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="btn btn-loja btn-sm d-lg-none" href="carrinho.html">Carrinho <span class="badge text-bg-warning" id="cart-count-mobile">0</span></a>
+        <div class="collapse navbar-collapse" id="menu">
+          <ul class="navbar-nav me-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Início</a></li>
+          <li class="nav-item"><a class="nav-link" href="catalogo.html">Catálogo</a></li>
+          <li class="nav-item"><a class="nav-link" href="lista-desejos.html">Desejos</a></li>
+          <li class="nav-item"><a class="nav-link" href="contato.html">Contato</a></li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Comunidade</a>
+              <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="https://discord.com" target="_blank" rel="noopener">Discord ↗</a></li>
+            <li><a class="dropdown-item" href="https://www.youtube.com" target="_blank" rel="noopener">YouTube ↗</a></li>
+            <li><a class="dropdown-item" href="https://www.twitch.tv" target="_blank" rel="noopener">Twitch ↗</a></li>
+              </ul>
+            </li>
+          </ul>
+          <div class="acoes-topo">
+            <a class="btn btn-outline-light" id="link-conta" href="login.html">Entrar</a>
+            <a class="btn btn-loja d-none d-lg-inline-block" href="carrinho.html">Carrinho <span class="badge text-bg-warning" id="cart-count">0</span></a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container-xl conteudo">
+    <section class="cabecalho-pagina revelar">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Início</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Pagamento</li>
+        </ol>
+      </nav>
+      <h1>Pagamento</h1>
+      <p>Falta pouco! Escolha como prefere pagar.</p>
+    </section>
+
+    <div class="passos revelar" aria-label="Etapas da compra">
+      <span class="passo feito">1. Carrinho</span>
+      <span class="passo ativo">2. Pagamento</span>
+      <span class="passo">3. Confirmação</span>
+    </div>
+
+    <div id="checkout-vazio" class="estado-vazio" hidden>
+      <h2>Não há itens para pagar</h2>
+      <p>Adicione jogos ao carrinho antes de finalizar a compra.</p>
+      <a class="btn btn-loja btn-lg" href="catalogo.html">Ver catálogo</a>
+    </div>
+
+    <form id="form-checkout" class="layout-compra revelar">
+      <div class="d-grid gap-3">
+        <fieldset class="card painel">
+          <div class="card-body">
+            <legend class="h5 fw-bold">Seus dados</legend>
+            <div class="row g-3">
+              <div class="col-12">
+                <label class="form-label" for="checkout-nome">Nome completo</label>
+                <input type="text" class="form-control" id="checkout-nome" placeholder="Como está no documento" required minlength="3">
+              </div>
+              <div class="col-md-7">
+                <label class="form-label" for="checkout-email">E-mail (a chave chega aqui)</label>
+                <input type="email" class="form-control" id="checkout-email" placeholder="voce@email.com" required>
+              </div>
+              <div class="col-md-5">
+                <label class="form-label" for="checkout-cpf">CPF</label>
+                <input type="text" class="form-control" id="checkout-cpf" placeholder="000.000.000-00" required pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" title="Use o formato 000.000.000-00">
+              </div>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset class="card painel">
+          <div class="card-body">
+            <legend class="h5 fw-bold">Forma de pagamento</legend>
+            <div class="opcoes-pagamento">
+              <label class="opcao-pagamento">
+                <input type="radio" name="pagamento" value="Pix" checked>
+                <span><strong>Pix</strong><small>Aprovação na hora</small></span>
+              </label>
+              <label class="opcao-pagamento">
+                <input type="radio" name="pagamento" value="Cartão de crédito">
+                <span><strong>Cartão</strong><small>Em até 6x sem juros</small></span>
+              </label>
+              <label class="opcao-pagamento">
+                <input type="radio" name="pagamento" value="Boleto">
+                <span><strong>Boleto</strong><small>Compensa em até 2 dias</small></span>
+              </label>
+            </div>
+
+            <div id="info-pix" class="alert alert-info mt-3 mb-0">
+              Ao confirmar, geramos um QR Code Pix válido por 30 minutos. O jogo é liberado assim que o pagamento cair.
+            </div>
+            <div id="info-boleto" class="alert alert-warning mt-3 mb-0" hidden>
+              O boleto vence em 3 dias úteis. A chave é enviada depois da compensação.
+            </div>
+            <div id="campos-cartao" class="row g-3 mt-1" hidden>
+              <div class="col-12">
+                <label class="form-label" for="cartao-numero">Número do cartão</label>
+                <input type="text" class="form-control" id="cartao-numero" placeholder="0000 0000 0000 0000" pattern="(\d{4} ?){4}" inputmode="numeric">
+              </div>
+              <div class="col-12 col-md-6">
+                <label class="form-label" for="cartao-nome">Nome impresso</label>
+                <input type="text" class="form-control" id="cartao-nome" placeholder="NOME COMO NO CARTÃO" minlength="3">
+              </div>
+              <div class="col-6 col-md-3">
+                <label class="form-label" for="cartao-validade">Validade</label>
+                <input type="text" class="form-control" id="cartao-validade" placeholder="MM/AA" pattern="(0[1-9]|1[0-2])/\d{2}">
+              </div>
+              <div class="col-6 col-md-3">
+                <label class="form-label" for="cartao-cvv">CVV</label>
+                <input type="text" class="form-control" id="cartao-cvv" placeholder="123" pattern="\d{3,4}" inputmode="numeric">
+              </div>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      <aside class="card painel resumo-compra">
+        <div class="card-body">
+          <h2 class="h5 fw-bold">Resumo</h2>
+          <ul class="list-group list-group-flush mb-3" id="resumo-itens"></ul>
+          <dl class="linhas-resumo">
+            <dt>Subtotal</dt><dd id="checkout-subtotal">R$ 0,00</dd>
+            <dt>Desconto</dt><dd id="checkout-desconto" class="text-success">- R$ 0,00</dd>
+            <dt class="total">Total</dt><dd class="total" id="checkout-total">R$ 0,00</dd>
+          </dl>
+          <button type="submit" class="btn btn-loja btn-lg w-100">Confirmar pagamento</button>
+          <a class="btn btn-link w-100" href="carrinho.html">Voltar ao carrinho</a>
+        </div>
+      </aside>
+    </form>
+
+    <div class="modal fade" id="modal-sucesso" tabindex="-1" aria-labelledby="titulo-sucesso" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-body text-center p-4">
+            <div class="icone-sucesso">✓</div>
+            <h2 class="h4 fw-bold" id="titulo-sucesso">Pedido confirmado!</h2>
+            <p>Pedido <strong id="numero-pedido"></strong> pago com <strong id="pagamento-pedido"></strong>.</p>
+            <p class="text-body-secondary">As chaves de ativação foram enviadas para o seu e-mail.</p>
+            <div class="d-flex gap-2 justify-content-center">
+              <a class="btn btn-loja" href="conta.html">Ver meus pedidos</a>
+              <a class="btn btn-outline-dark" href="index.html">Voltar à loja</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="rodape-site">
+    <div class="container-xl rodape-colunas">
+      <div class="rodape-marca">
+        <img src="img/logo.png" alt="Level Up Store">
+        <p>Loja de jogos digitais com chave de ativação na hora, preço justo e suporte de quem também joga.</p>
+      </div>
+      <nav aria-label="Loja">
+        <h2>Loja</h2>
+        <ul>
+          <li><a href="catalogo.html">Catálogo</a></li>
+          <li><a href="catalogo.html?cat=Indie">Indies</a></li>
+          <li><a href="lista-desejos.html">Lista de desejos</a></li>
+          <li><a href="carrinho.html">Carrinho</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Ajuda">
+        <h2>Ajuda</h2>
+        <ul>
+          <li><a href="conta.html">Minha conta</a></li>
+          <li><a href="contato.html">Fale conosco</a></li>
+          <li><a href="contato.html#duvidas">Dúvidas frequentes</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Redes">
+        <h2>Comunidade</h2>
+        <ul>
+          <li><a href="https://discord.com" target="_blank" rel="noopener">Discord ↗</a></li>
+          <li><a href="https://www.youtube.com" target="_blank" rel="noopener">YouTube ↗</a></li>
+          <li><a href="https://www.twitch.tv" target="_blank" rel="noopener">Twitch ↗</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="rodape-base">
+      <p class="container-xl">© 2026 Level Up Store · Projeto acadêmico de Desenvolvimento Front-End para Web · Universidade Positivo</p>
+    </div>
+  </footer>
+
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/dados.js"></script>
+  <script src="js/script.js"></script>
+  <script src="js/checkout.js"></script>
 </body>
 </html>

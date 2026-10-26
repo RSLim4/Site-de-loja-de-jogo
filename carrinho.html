@@ -1,24 +1,161 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Carrinho | Level Up Store</title>
-<link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Level Up Store: loja de jogos digitais para PC e console.">
+  <title>Carrinho | Level Up Store</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<header class="topo">
-  <a class="logo" href="index.html"><img src="img/logo.png" alt="Level Up Store"></a>
-  <nav><a href="index.html">Início</a><a href="catalogo.html">Catálogo</a><a href="lista-desejos.html">Desejos</a><a href="contato.html">Contato</a><a href="login.html">Entrar</a></nav>
-  <a class="carrinho" href="carrinho.html">Carrinho <span id="cart-count">0</span></a>
-</header>
-<main>
-<h1>Carrinho</h1><div id="itens"></div><p class="total">Total: <strong id="total">R$ 0,00</strong></p><a class="btn" href="checkout.html">Finalizar compra</a>
-</main>
-<footer class="rodape">
-  <p>© 2026 Level Up Store. Projeto de estudo.</p>
-  <a href="conta.html">Minha conta</a> <a href="contato.html">Suporte</a>
-</footer>
-<script src="js/script.js"></script>
+  <header class="topo-site">
+    <div class="topo-marca container-xl">
+      <a class="logo" href="index.html"><img src="img/logo.png" alt="Level Up Store - página inicial"></a>
+      <p class="tagline">Jogos originais pra PC e console, do lançamento ao clássico.</p>
+    </div>
+    <nav class="navbar navbar-expand-lg navbar-dark menu-principal" aria-label="Menu principal">
+      <div class="container-xl">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Abrir menu">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="btn btn-loja btn-sm d-lg-none" href="carrinho.html">Carrinho <span class="badge text-bg-warning" id="cart-count-mobile">0</span></a>
+        <div class="collapse navbar-collapse" id="menu">
+          <ul class="navbar-nav me-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Início</a></li>
+          <li class="nav-item"><a class="nav-link" href="catalogo.html">Catálogo</a></li>
+          <li class="nav-item"><a class="nav-link" href="lista-desejos.html">Desejos</a></li>
+          <li class="nav-item"><a class="nav-link" href="contato.html">Contato</a></li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Comunidade</a>
+              <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="https://discord.com" target="_blank" rel="noopener">Discord ↗</a></li>
+            <li><a class="dropdown-item" href="https://www.youtube.com" target="_blank" rel="noopener">YouTube ↗</a></li>
+            <li><a class="dropdown-item" href="https://www.twitch.tv" target="_blank" rel="noopener">Twitch ↗</a></li>
+              </ul>
+            </li>
+          </ul>
+          <div class="acoes-topo">
+            <a class="btn btn-outline-light" id="link-conta" href="login.html">Entrar</a>
+            <a class="btn btn-loja d-none d-lg-inline-block" href="carrinho.html">Carrinho <span class="badge text-bg-warning" id="cart-count">0</span></a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container-xl conteudo">
+    <section class="cabecalho-pagina revelar">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Início</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Carrinho</li>
+        </ol>
+      </nav>
+      <h1>Carrinho</h1>
+      <p>Confira seus jogos antes de finalizar a compra.</p>
+    </section>
+
+    <div class="passos revelar" aria-label="Etapas da compra">
+      <span class="passo ativo">1. Carrinho</span>
+      <span class="passo">2. Pagamento</span>
+      <span class="passo">3. Confirmação</span>
+    </div>
+
+    <div id="carrinho-vazio" class="estado-vazio revelar" hidden>
+      <h2>Seu carrinho está vazio</h2>
+      <p>Que tal dar uma olhada nas promoções da semana?</p>
+      <a class="btn btn-loja btn-lg" href="catalogo.html">Ver catálogo</a>
+    </div>
+
+    <section id="area-carrinho" class="layout-compra revelar">
+      <div class="card painel">
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table align-middle tabela-loja tabela-carrinho">
+              <thead>
+                <tr>
+                  <th scope="col">Jogo</th>
+                  <th scope="col">Preço</th>
+                  <th scope="col">Qtd.</th>
+                  <th scope="col">Subtotal</th>
+                  <th scope="col"><span class="visually-hidden">Ações</span></th>
+                </tr>
+              </thead>
+              <tbody id="itens-carrinho"></tbody>
+            </table>
+          </div>
+          <div class="d-flex justify-content-between flex-wrap gap-2">
+            <a class="btn btn-outline-dark" href="catalogo.html">← Continuar comprando</a>
+            <button type="button" class="btn btn-outline-danger" id="limpar-carrinho">Esvaziar carrinho</button>
+          </div>
+        </div>
+      </div>
+
+      <aside class="card painel resumo-compra">
+        <div class="card-body">
+          <h2 class="h5 fw-bold">Resumo do pedido</h2>
+          <form id="form-cupom" class="mb-3">
+            <label class="form-label" for="cupom">Cupom de desconto</label>
+            <div class="input-group">
+              <input type="text" class="form-control" id="cupom" placeholder="Ex.: LEVELUP10" required minlength="4">
+              <button class="btn btn-dark" type="submit">Aplicar</button>
+            </div>
+            <div id="mensagem-cupom" role="status"></div>
+          </form>
+          <dl class="linhas-resumo">
+            <dt>Itens</dt><dd id="resumo-qtd">0</dd>
+            <dt>Subtotal</dt><dd id="resumo-subtotal">R$ 0,00</dd>
+            <dt>Desconto</dt><dd id="resumo-desconto" class="text-success">- R$ 0,00</dd>
+            <dt class="total">Total</dt><dd class="total" id="resumo-total">R$ 0,00</dd>
+          </dl>
+          <a class="btn btn-loja btn-lg w-100" href="checkout.html">Ir para o pagamento</a>
+          <p class="pequeno-aviso">🔒 Pagamento 100% seguro</p>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <footer class="rodape-site">
+    <div class="container-xl rodape-colunas">
+      <div class="rodape-marca">
+        <img src="img/logo.png" alt="Level Up Store">
+        <p>Loja de jogos digitais com chave de ativação na hora, preço justo e suporte de quem também joga.</p>
+      </div>
+      <nav aria-label="Loja">
+        <h2>Loja</h2>
+        <ul>
+          <li><a href="catalogo.html">Catálogo</a></li>
+          <li><a href="catalogo.html?cat=Indie">Indies</a></li>
+          <li><a href="lista-desejos.html">Lista de desejos</a></li>
+          <li><a href="carrinho.html">Carrinho</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Ajuda">
+        <h2>Ajuda</h2>
+        <ul>
+          <li><a href="conta.html">Minha conta</a></li>
+          <li><a href="contato.html">Fale conosco</a></li>
+          <li><a href="contato.html#duvidas">Dúvidas frequentes</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Redes">
+        <h2>Comunidade</h2>
+        <ul>
+          <li><a href="https://discord.com" target="_blank" rel="noopener">Discord ↗</a></li>
+          <li><a href="https://www.youtube.com" target="_blank" rel="noopener">YouTube ↗</a></li>
+          <li><a href="https://www.twitch.tv" target="_blank" rel="noopener">Twitch ↗</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="rodape-base">
+      <p class="container-xl">© 2026 Level Up Store · Projeto acadêmico de Desenvolvimento Front-End para Web · Universidade Positivo</p>
+    </div>
+  </footer>
+
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/dados.js"></script>
+  <script src="js/script.js"></script>
+  <script src="js/carrinho.js"></script>
 </body>
 </html>

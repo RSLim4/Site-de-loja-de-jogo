@@ -1,24 +1,166 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Contato e suporte | Level Up Store</title>
-<link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Level Up Store: loja de jogos digitais para PC e console.">
+  <title>Contato | Level Up Store</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<header class="topo">
-  <a class="logo" href="index.html"><img src="img/logo.png" alt="Level Up Store"></a>
-  <nav><a href="index.html">Início</a><a href="catalogo.html">Catálogo</a><a href="lista-desejos.html">Desejos</a><a href="contato.html" class=on>Contato</a><a href="login.html">Entrar</a></nav>
-  <a class="carrinho" href="carrinho.html">Carrinho <span id="cart-count">0</span></a>
-</header>
-<main>
-<h1>Contato e suporte</h1><form class="form"><label>Nome <input required></label><label>E-mail <input type="email" required></label><label>Assunto <select><option>Pedido</option><option>Pagamento</option><option>Outro</option></select></label><label>Mensagem <textarea rows="5" required></textarea></label><button>Enviar</button></form><section><h2>Perguntas frequentes</h2><details><summary>Como recebo meu jogo?</summary><p>Resposta.</p></details><details><summary>Posso pedir reembolso?</summary><p>Resposta.</p></details></section>
-</main>
-<footer class="rodape">
-  <p>© 2026 Level Up Store. Projeto de estudo.</p>
-  <a href="conta.html">Minha conta</a> <a href="contato.html">Suporte</a>
-</footer>
-<script src="js/script.js"></script>
+  <header class="topo-site">
+    <div class="topo-marca envoltorio">
+      <a class="logo" href="index.html"><img src="img/logo.png" alt="Level Up Store - página inicial"></a>
+      <p class="tagline">Jogos originais pra PC e console, do lançamento ao clássico.</p>
+    </div>
+    <nav class="menu-puro" aria-label="Menu principal">
+      <div class="envoltorio menu-puro-linha">
+        <button type="button" class="menu-toggle" id="menu-toggle" aria-controls="menu-links" aria-expanded="false">☰ Menu</button>
+        <ul class="menu-links" id="menu-links">
+        <li><a href="index.html">Início</a></li>
+        <li><a href="catalogo.html">Catálogo</a></li>
+        <li><a href="lista-desejos.html">Desejos</a></li>
+        <li><a href="contato.html" class="ativo" aria-current="page">Contato</a></li>
+        <li class="submenu">
+            <span>Comunidade ▾</span>
+            <ul>
+            <li><a href="https://discord.com" target="_blank" rel="noopener">Discord ↗</a></li>
+            <li><a href="https://www.youtube.com" target="_blank" rel="noopener">YouTube ↗</a></li>
+            <li><a href="https://www.twitch.tv" target="_blank" rel="noopener">Twitch ↗</a></li>
+            </ul>
+          </li>
+        </ul>
+        <div class="acoes-topo">
+          <a class="botao botao-contorno-claro" id="link-conta" href="login.html">Entrar</a>
+          <a class="botao botao-principal" href="carrinho.html">Carrinho <span class="contador" id="cart-count">0</span></a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="envoltorio conteudo">
+    <section class="cabecalho-pagina revelar">
+      <nav aria-label="Você está em">
+        <ol class="migalhas">
+          <li><a href="index.html">Início</a></li>
+          <li aria-current="page">Contato</li>
+        </ol>
+      </nav>
+      <h1>Fale com a gente</h1>
+      <p>Dúvida sobre pedido, ativação ou sugestão de jogo? Mande sua mensagem.</p>
+    </section>
+
+    <section class="layout-contato revelar">
+      <form id="form-contato" class="formulario-puro">
+        <h2>Enviar mensagem</h2>
+        <div class="campo">
+          <label for="contato-nome">Nome</label>
+          <input type="text" id="contato-nome" name="nome" placeholder="Seu nome" required minlength="3">
+        </div>
+        <div class="campo">
+          <label for="contato-email">E-mail</label>
+          <input type="email" id="contato-email" name="email" placeholder="voce@email.com" required pattern="[^@\s]+@[^@\s]+\.[a-z]{2,}">
+        </div>
+        <div class="campo">
+          <label for="contato-assunto">Assunto</label>
+          <select id="contato-assunto" name="assunto" required>
+            <option value="">Escolha um assunto</option>
+            <option>Problema com pedido</option>
+            <option>Ativação de chave</option>
+            <option>Pagamento e reembolso</option>
+            <option>Sugestão de jogo</option>
+            <option>Outro assunto</option>
+          </select>
+        </div>
+        <div class="campo">
+          <label for="contato-mensagem">Mensagem</label>
+          <textarea id="contato-mensagem" name="mensagem" rows="5" placeholder="Conte o que aconteceu (mínimo 10 caracteres)" required minlength="10" maxlength="500"></textarea>
+          <small class="contador-texto" id="contador-texto">0/500</small>
+        </div>
+        <input type="submit" class="botao botao-principal botao-grande" value="Enviar mensagem">
+      </form>
+
+      <aside class="canais">
+        <h2>Outros canais</h2>
+        <ul class="lista-canais">
+          <li><strong>E-mail</strong><span>suporte@levelupstore.com.br</span></li>
+          <li><strong>Telefone</strong><span>(41) 3000-0000</span></li>
+          <li><strong>Horário</strong><span>Seg. a sex., das 9h às 18h</span></li>
+          <li><strong>Discord</strong><a href="https://discord.com" target="_blank" rel="noopener">Entrar no servidor ↗</a></li>
+        </ul>
+      </aside>
+    </section>
+
+    <section class="revelar">
+      <div class="titulo-secao">
+        <h2>Mensagens enviadas</h2>
+        <button type="button" class="botao botao-texto" id="limpar-mensagens">Limpar histórico</button>
+      </div>
+      <ul class="lista-mensagens" id="lista-mensagens"></ul>
+    </section>
+
+    <section id="duvidas" class="revelar">
+      <div class="titulo-secao">
+        <h2>Dúvidas frequentes</h2>
+      </div>
+      <details>
+        <summary>Quanto tempo demora pra receber o jogo?</summary>
+        <p>Com Pix ou cartão, a chave chega no seu e-mail em poucos segundos depois da aprovação. No boleto, depois da compensação (até 2 dias úteis).</p>
+      </details>
+      <details>
+        <summary>Como ativo a chave?</summary>
+        <p>Abra a loja da sua plataforma (Steam, PlayStation Store, Xbox ou eShop), procure a opção "Ativar código" e cole a chave recebida.</p>
+      </details>
+      <details>
+        <summary>Posso pedir reembolso?</summary>
+        <p>Sim, em até 7 dias após a compra, desde que a chave ainda não tenha sido ativada.</p>
+      </details>
+      <details>
+        <summary>Os jogos são originais?</summary>
+        <p>Sim. Todas as chaves vêm de distribuidoras oficiais.</p>
+      </details>
+    </section>
+  </main>
+
+  <footer class="rodape-site">
+    <div class="envoltorio rodape-colunas">
+      <div class="rodape-marca">
+        <img src="img/logo.png" alt="Level Up Store">
+        <p>Loja de jogos digitais com chave de ativação na hora, preço justo e suporte de quem também joga.</p>
+      </div>
+      <nav aria-label="Loja">
+        <h2>Loja</h2>
+        <ul>
+          <li><a href="catalogo.html">Catálogo</a></li>
+          <li><a href="catalogo.html?cat=Indie">Indies</a></li>
+          <li><a href="lista-desejos.html">Lista de desejos</a></li>
+          <li><a href="carrinho.html">Carrinho</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Ajuda">
+        <h2>Ajuda</h2>
+        <ul>
+          <li><a href="conta.html">Minha conta</a></li>
+          <li><a href="contato.html">Fale conosco</a></li>
+          <li><a href="contato.html#duvidas">Dúvidas frequentes</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Redes">
+        <h2>Comunidade</h2>
+        <ul>
+          <li><a href="https://discord.com" target="_blank" rel="noopener">Discord ↗</a></li>
+          <li><a href="https://www.youtube.com" target="_blank" rel="noopener">YouTube ↗</a></li>
+          <li><a href="https://www.twitch.tv" target="_blank" rel="noopener">Twitch ↗</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="rodape-base">
+      <p class="envoltorio">© 2026 Level Up Store · Projeto acadêmico de Desenvolvimento Front-End para Web · Universidade Positivo</p>
+    </div>
+  </footer>
+
+  <script src="js/dados.js"></script>
+  <script src="js/script.js"></script>
+  <script src="js/contato.js"></script>
 </body>
 </html>

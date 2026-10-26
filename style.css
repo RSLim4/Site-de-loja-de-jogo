@@ -1,0 +1,327 @@
+/* =========================================
+   CORES DO SITE
+   Para mudar a paleta, altere só aqui.
+   ========================================= */
+:root {
+  --bg: #E9EEF2;      /* fundo da página */
+  --ink: #17203A;     /* azul-marinho: textos, cabeçalho e rodapé */
+  --accent: #D6246E;  /* rosa: botões, preços e carrinho */
+  --sun: #FFC93C;     /* amarelo: destaques, capas e foco do teclado */
+  --card: #fff;       /* fundo dos cards */
+  --line: #C9D3DC;    /* cor das bordas */
+}
+
+/* =========================================
+   BASE (vale para o site inteiro)
+   ========================================= */
+* {
+  box-sizing: border-box; /* padding não aumenta o tamanho dos elementos */
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.5;
+}
+
+a {
+  color: inherit; /* links usam a cor do texto ao redor */
+}
+
+main {
+  max-width: 1100px;     /* largura máxima do conteúdo */
+  margin: 0 auto;        /* centraliza */
+  padding: 2rem 1.25rem;
+}
+
+h1 {
+  font-size: 2.2rem;
+  margin: 0 0 1rem;
+}
+
+section {
+  margin-bottom: 2.5rem; /* espaço entre as seções */
+}
+
+/* =========================================
+   CABEÇALHO (header com a classe "topo")
+   ========================================= */
+.topo {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;       /* no celular os itens quebram de linha */
+  padding: 1rem 2rem;
+  background: var(--ink);
+  color: #fff;
+}
+
+/* Logo: a margem automática à direita empurra o menu e o carrinho para o lado direito */
+.logo {
+  display: block;
+  line-height: 0;
+  margin-right: auto;
+}
+
+.logo img {
+  display: block;
+  height: 76px;          /* altere aqui para aumentar ou diminuir a logo */
+  width: auto;           /* mantém a proporção */
+}
+
+/* Menu de navegação */
+.topo nav {
+  display: flex;
+  gap: 1rem;
+}
+
+.topo nav a {
+  text-decoration: none;
+  padding: 0.2rem 0;
+  border-bottom: 2px solid transparent;
+}
+
+/* Link da página atual (class="on") e hover ganham sublinhado amarelo */
+.topo nav a.on,
+.topo nav a:hover {
+  border-color: var(--sun);
+}
+
+/* Botão do carrinho com o contador */
+.carrinho {
+  background: var(--accent);
+  padding: 0.4rem 0.9rem;
+  border-radius: 99px;   /* formato de pílula */
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* =========================================
+   BANNER DA PÁGINA INICIAL
+   ========================================= */
+.hero {
+  background: var(--ink);
+  color: #fff;
+  padding: 3.5rem 2rem;
+  border-radius: 12px;
+  border-left: 12px solid var(--sun); /* faixa amarela na lateral */
+}
+
+.hero h1 {
+  font-size: 2.8rem;
+  max-width: 14ch;       /* limita a largura do título */
+}
+
+/* =========================================
+   BOTÕES
+   ========================================= */
+.btn,
+button {
+  display: inline-block;
+  background: var(--accent);
+  color: #fff;
+  border: 0;
+  padding: 0.65rem 1.1rem;
+  border-radius: 8px;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+/* Botão secundário (só com contorno) */
+.btn.sec {
+  background: transparent;
+  color: var(--ink);
+  border: 2px solid var(--ink);
+}
+
+/* Efeito ao passar o mouse: clareia um pouco */
+button:hover,
+.btn:hover {
+  filter: brightness(1.1);
+}
+
+/* Contorno amarelo ao navegar pelo teclado (acessibilidade) */
+:focus-visible {
+  outline: 3px solid var(--sun);
+  outline-offset: 2px;
+}
+
+/* =========================================
+   GRADE E CARDS DE JOGOS
+   ========================================= */
+/* Cria colunas automáticas: cada card tem no mínimo 210px */
+.grade {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 1.25rem;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column; /* itens um embaixo do outro */
+  gap: 0.4rem;
+}
+
+/* Espaço da capa do jogo (troque por <img> quando tiver imagens) */
+.capa {
+  aspect-ratio: 3 / 4;    /* formato de capa vertical */
+  background: var(--sun);
+  display: grid;
+  place-items: center;    /* centraliza a letra/imagem */
+  font-size: 3rem;
+  font-weight: 800;
+  border-radius: 6px;
+}
+
+/* Capa maior, usada na página de detalhe do jogo */
+.capa.grande {
+  width: 260px;
+}
+
+.card h3 {
+  margin: 0.3rem 0 0;
+  font-size: 1.05rem;
+}
+
+.preco {
+  font-weight: 700;
+  color: var(--accent);
+  font-size: 1.15rem;
+  margin: 0.2rem 0;
+}
+
+/* Botões de categoria da página inicial */
+.cat {
+  background: var(--card);
+  border: 2px solid var(--ink);
+  border-radius: 10px;
+  padding: 1.5rem;
+  text-align: center;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+/* =========================================
+   CAMPOS DE FORMULÁRIO
+   ========================================= */
+input,
+select,
+textarea {
+  font: inherit;
+  padding: 0.55rem;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: #fff;
+  width: 100%;
+}
+
+/* =========================================
+   CATÁLOGO: BARRA DE BUSCA E FILTROS
+   ========================================= */
+.filtros {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+/* Precisa vir DEPOIS da regra de input acima para sobrescrevê-la */
+.filtros input,
+.filtros select {
+  width: auto;
+  flex: 1;
+  min-width: 160px;
+}
+
+/* =========================================
+   PÁGINA DE DETALHE DO JOGO
+   ========================================= */
+.detalhe {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;       /* no celular a capa fica em cima do texto */
+}
+
+/* =========================================
+   FORMULÁRIOS (login, cadastro, checkout, contato)
+   ========================================= */
+.form {
+  max-width: 460px;
+  display: grid;
+  gap: 1rem;
+}
+
+.form label {
+  display: grid;
+  gap: 0.25rem;
+  font-weight: 600;
+}
+
+fieldset {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  display: grid;
+  gap: 0.75rem;
+}
+
+/* =========================================
+   CARRINHO
+   ========================================= */
+/* Cada linha de item no carrinho */
+.item {
+  display: flex;
+  justify-content: space-between; /* nome à esquerda, preço e botão à direita */
+  align-items: center;
+  background: #fff;
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+}
+
+.total {
+  font-size: 1.3rem;
+}
+
+/* Perguntas frequentes (página de contato) */
+details {
+  background: #fff;
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+}
+
+/* =========================================
+   RODAPÉ
+   ========================================= */
+.rodape {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 1.5rem 2rem;
+  background: var(--ink);
+  color: #fff;
+}
+
+/* =========================================
+   CELULAR (telas de até 600px)
+   ========================================= */
+@media (max-width: 600px) {
+  .topo {
+    padding: 1rem;
+  }
+  .hero h1 {
+    font-size: 2rem;
+  }
+  .capa.grande {
+    width: 100%;
+  }
+}

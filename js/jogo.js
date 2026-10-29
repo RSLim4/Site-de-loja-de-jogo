@@ -63,3 +63,21 @@ for (let i = 0; i < jogos.length && totalSugestoes < 4; i++) {
 document.getElementById("sugestoes").innerHTML = sugestoesHtml;
 
 marcarBotoesDesejo();
+
+// Trailer: usa o vídeo do próprio jogo (campo "video" em dados.js);
+// se o jogo não tiver, continua o vídeo padrão da loja que está no HTML.
+const playerTrailer = document.querySelector("#area-trailer video");
+if (playerTrailer) {
+  playerTrailer.poster = jogoAtual.imagem;
+  if (jogoAtual.video) {
+    playerTrailer.querySelector("source").src = jogoAtual.video;
+    playerTrailer.load();
+  }
+// Trilha sonora do jogo
+const playerAudio = document.querySelector(".trilha audio");
+if (playerAudio && jogoAtual.audio) {
+  playerAudio.querySelector("source").src = jogoAtual.audio;
+  playerAudio.load();
+}
+  
+}

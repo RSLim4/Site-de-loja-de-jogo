@@ -22,7 +22,14 @@ formCadastro.addEventListener("submit", function (evento) {
   const email = document.getElementById("cad-email").value.trim().toLowerCase();
   const mensagem = document.getElementById("mensagem-cadastro");
 
+  const cpf = document.getElementById("cad-cpf").value;
+
   for (let i = 0; i < usuarios.length; i++) {
+    if (usuarios[i].cpf === cpf) {
+      mensagem.className = "alert alert-warning";
+      mensagem.textContent = "Esse CPF já tem cadastro. Faça login.";
+      return;
+    }
     if (usuarios[i].email === email) {
       mensagem.className = "alert alert-warning";
       mensagem.textContent = "Esse e-mail já tem cadastro. Faça login.";
@@ -33,7 +40,7 @@ formCadastro.addEventListener("submit", function (evento) {
   const novoUsuario = {
     nome: document.getElementById("cad-nome").value.trim(),
     email: email,
-    cpf: document.getElementById("cad-cpf").value,
+    cpf: cpf,
     telefone: document.getElementById("cad-telefone").value,
     plataforma: document.getElementById("cad-plataforma").value,
     senha: campoSenha.value,

@@ -162,7 +162,7 @@ const jogos = [
     descricao: "Reúna seu grupo e volte aos Reinos Esquecidos em uma história de amizade, traição e sobrevivência. Cada escolha muda a aventura, que pode ser jogada sozinho ou com até 4 amigos.",
     peso: "pesado",
     video: "video/baldur.mp4",
-    audio: "audio/baldur-gate-3.mp3"
+    audio: "audio/baldurs-gate-3.mp3"
   }
 ];
 

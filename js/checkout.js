@@ -31,7 +31,8 @@ const usuarioCheckout = usuarioLogado();
 if (usuarioCheckout) {
   document.getElementById("checkout-nome").value = usuarioCheckout.nome;
   document.getElementById("checkout-email").value = usuarioCheckout.email;
-  document.getElementById("checkout-cpf").value = usuarioCheckout.cpf;
+  document.getElementById("checkout-cpf").value = formatarCpf(usuarioCheckout.cpf || "");
+  document.getElementById("checkout-cpf").dispatchEvent(new Event("input"));
 }
 
 const camposCartao = document.getElementById("campos-cartao");

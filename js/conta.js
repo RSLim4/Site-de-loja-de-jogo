@@ -11,8 +11,8 @@ if (usuarioConta === null) {
 } else {
   document.getElementById("conta-nome").textContent = usuarioConta.nome;
   document.getElementById("conta-email").textContent = usuarioConta.email;
-  document.getElementById("conta-telefone").textContent = usuarioConta.telefone;
-  document.getElementById("conta-plataforma").textContent = usuarioConta.plataforma;
+  document.getElementById("conta-telefone").textContent = usuarioConta.telefone || "-";
+  document.getElementById("conta-plataforma").textContent = usuarioConta.plataforma || "-";
   document.getElementById("conta-desde").textContent = usuarioConta.desde;
   document.getElementById("conta-inicial").textContent = usuarioConta.nome.charAt(0).toUpperCase();
 

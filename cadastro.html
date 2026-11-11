@@ -71,11 +71,11 @@
             </div>
             <div class="col-md-6">
               <label class="form-label" for="cad-cpf">CPF</label>
-              <input type="text" class="form-control" id="cad-cpf" placeholder="000.000.000-00" required pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" title="Use o formato 000.000.000-00">
+              <input type="text" class="form-control" id="cad-cpf" placeholder="000.000.000-00" required inputmode="numeric" maxlength="14" autocomplete="off" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" title="Digite só os 11 números do CPF">
             </div>
             <div class="col-md-6">
               <label class="form-label" for="cad-telefone">Celular</label>
-              <input type="tel" class="form-control" id="cad-telefone" placeholder="(41) 99999-9999" required pattern="\(\d{2}\) \d{4,5}-\d{4}" title="Use o formato (41) 99999-9999">
+              <input type="tel" class="form-control" id="cad-telefone" placeholder="(41) 99999-9999" required inputmode="numeric" maxlength="15" autocomplete="tel" pattern="\(\d{2}\) \d{4,5}-\d{4}" title="Digite DDD + número, só os números">
             </div>
             <div class="col-12">
               <label class="form-label" for="cad-plataforma">Onde você mais joga?</label>
@@ -151,6 +151,7 @@
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/dados.js"></script>
   <script src="js/script.js"></script>
+  <script src="js/mascaras.js"></script>
   <script src="js/cadastro.js"></script>
 </body>
 </html>

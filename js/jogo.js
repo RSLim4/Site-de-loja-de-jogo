@@ -74,7 +74,6 @@ if (playerTrailer) {
   }
 }
 
-// Trilha sonora do jogo
 const playerAudio = document.querySelector(".trilha audio");
 if (playerAudio && jogoAtual.audio) {
   playerAudio.querySelector("source").src = jogoAtual.audio;
